@@ -2,6 +2,7 @@
 
 Saint Bernards Emergency Transfer Summary
 
+```ruby
 +----------------------+--------+--------+---------+---------+-----+-------+
 | Name                 |  Lines |    LOC | Classes | Methods | M/C | LOC/M |
 +----------------------+--------+--------+---------+---------+-----+-------+
@@ -23,3 +24,4 @@ Saint Bernards Emergency Transfer Summary
 | Total                |    434 |    264 |      35 |      26 |   0 |     8 |
 +----------------------+--------+--------+---------+---------+-----+-------+
   Code LOC: 210     Test LOC: 54     Code to Test Ratio: 1:0.3
+```
