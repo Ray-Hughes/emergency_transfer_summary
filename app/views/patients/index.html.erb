@@ -1,0 +1,26 @@
+<div class="patients-index">
+  <h1>Patients</h1>
+
+  <%= link_to "Admit Patient", new_patient_path, class: 'btn btn-primary mb-10' %>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">MR#</th>
+        <th scope="col">First</th>
+        <th scope="col">Middle</th>
+        <th scope="col">Last</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @patients.each do |patient| %>
+        <tr data-href="<%= edit_patient_path(patient) %>">
+          <th scope="row"><%= patient.mr %></th>
+          <td><%= patient.first_name %></td>
+          <td><%= patient.middle_name %></td>
+          <td><%= patient.last_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
