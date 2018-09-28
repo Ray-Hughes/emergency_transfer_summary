@@ -5,10 +5,14 @@ class PatientsController < ApplicationController
   end
   
   def edit
+    add_breadcrumb '<< Patients', patients_path
+    
     @patient = Patient.find(params[:id])
   end
   
   def new
+    add_breadcrumb '<< Patients', patients_path
+    
     @patient = Patient.new
   end
   
