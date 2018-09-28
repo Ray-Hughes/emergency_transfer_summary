@@ -12,9 +12,12 @@
 
 ActiveRecord::Schema.define(version: 2018_09_23_172432) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "admissions", force: :cascade do |t|
     t.datetime "moment"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_admissions_on_patient_id"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
 
   create_table "allergies", force: :cascade do |t|
     t.text "description"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_allergies_on_patient_id"
@@ -32,9 +35,9 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
     t.string "coding_system"
     t.string "code"
     t.text "description"
-    t.integer "patient_id"
-    t.integer "patient_condition_id"
-    t.integer "admission_id"
+    t.bigint "patient_id"
+    t.bigint "patient_condition_id"
+    t.bigint "admission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admission_id"], name: "index_diagnoses_on_admission_id"
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
   create_table "diagnostic_procedures", force: :cascade do |t|
     t.text "description"
     t.datetime "moment"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_diagnostic_procedures_on_patient_id"
@@ -62,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
     t.decimal "unit"
     t.decimal "dosage"
     t.integer "route"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_medication_orders_on_patient_id"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
   create_table "observations", force: :cascade do |t|
     t.text "description"
     t.datetime "moment"
-    t.integer "admission_id"
+    t.bigint "admission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admission_id"], name: "index_observations_on_admission_id"
@@ -80,7 +83,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
   create_table "order_frequencies", force: :cascade do |t|
     t.string "value"
     t.integer "unit"
-    t.integer "medication_order_id"
+    t.bigint "medication_order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["medication_order_id"], name: "index_order_frequencies_on_medication_order_id"
@@ -99,7 +102,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
 
   create_table "symptoms", force: :cascade do |t|
     t.text "description"
-    t.integer "admission_id"
+    t.bigint "admission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["admission_id"], name: "index_symptoms_on_admission_id"
@@ -108,7 +111,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
   create_table "treatments", force: :cascade do |t|
     t.text "description"
     t.text "necessity"
-    t.integer "patient_id"
+    t.bigint "patient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_treatments_on_patient_id"
