@@ -2,6 +2,8 @@
 
 Saint Bernards Emergency Transfer Summary
 
+View app on heroku https://saint-bernard-emr.herokuapp.com/
+
 ```ruby
 +----------------------+--------+--------+---------+---------+-----+-------+
 | Name                 |  Lines |    LOC | Classes | Methods | M/C | LOC/M |
