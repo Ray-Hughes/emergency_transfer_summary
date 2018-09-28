@@ -1,8 +1,10 @@
 class Array
   def to_sentence
-    default_words_connector     = ", "
-    default_two_words_connector = " and "
-    default_last_word_connector = ", and "
+    options = {
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+    }
 
     case length
       when 0
