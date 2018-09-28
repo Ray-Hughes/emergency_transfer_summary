@@ -52,19 +52,19 @@
       <td>
         <p>
           This <%= @patient.age %> years old <%= @patient.gender %> was admitted to <%= @facility.name %> 
-          on <%= @patient.admission.date %> at <%= @patient.admission.time %> due to <%= @patient.admission.diagnoses.map(&:described_code).to_sentence %>. 
-          The observed symptoms on admission were <%= @patient.admission.symptoms.map(&:description).to_sentence %>. 
-          <%= @patient.admission.observations.map(&:description).to_sentence %>.
+          on <%= @patient.admission.date %> at <%= @patient.admission.time %> due to <%= to_sentence @patient.admission.diagnoses.map(&:described_code) %>. 
+          The observed symptoms on admission were <%= to_sentence @patient.admission.symptoms.map(&:description) %>. 
+          <%= to_sentence @patient.admission.observations.map(&:description) %>.
         </p>
         <p>
-          Upon asking about known allergies, the patient disclosed <%= @patient.allergies.map(&:description).to_sentence %>. 
-          Upon asking about chronic conditions, the patient disclosed <%= @patient.chronic_conditions.map(&:description).to_sentence %>. 
-          The patient was administered with <%= @patient.medications.map(&:summary).to_sentence %>.
+          Upon asking about known allergies, the patient disclosed <%= to_sentence @patient.allergies.map(&:description) %>. 
+          Upon asking about chronic conditions, the patient disclosed <%= to_sentence @patient.chronic_conditions.map(&:description) %>. 
+          The patient was administered with <%= to_sentence @patient.medications.map(&:summary) %>.
         </p>
         <p>
-          The staff performed <%= @patient.diagnostic_procedures.map(&:summary).to_sentence %>, 
-          revealing <%= @patient.diagnoses.map(&:described_code).to_sentence %>. Our team proceeded to 
-          <%= @patient.treatments.map(&:summary).to_sentence %>.
+          The staff performed <%= to_sentence @patient.diagnostic_procedures.map(&:summary) %>, 
+          revealing <%= to_sentence @patient.diagnoses.map(&:described_code) %>. Our team proceeded to 
+          <%= to_sentence @patient.treatments.map(&:summary) %>.
         </p>
       </td>
     </tr>

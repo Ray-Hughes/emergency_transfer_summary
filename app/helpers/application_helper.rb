@@ -25,4 +25,21 @@ module ApplicationHelper
     html_safe
   end
   
+  def to_sentence(items = [])
+    words_connector = ", "
+    two_words_connector = " and "
+    last_word_connector = ", and "
+    
+    case items.length
+      when 0
+        ""
+      when 1
+        items[0].to_s.dup
+      when 2
+        "#{items[0]}#{two_words_connector}#{items[1]}"
+      else
+        "#{items[0...-1].join(words_connector)}#{last_word_connector}#{items[-1]}"
+    end
+  end
+  
 end
