@@ -1,7 +1,18 @@
 class DiagnosticProcedure < ApplicationRecord
   
+  # ******************************
+  # Class Methods & Scopes
+  # 
+  
+  # *******************************
+  # Validations & Callbacks
+  # 
+  
   belongs_to :patient
   
+  # **********************************
+  # Instance Methods
+  # 
   def date
     moment.strftime("%m-%d-%Y")
   end
