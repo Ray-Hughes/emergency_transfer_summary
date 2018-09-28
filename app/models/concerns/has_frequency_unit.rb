@@ -1,6 +1,6 @@
 module HasFrequencyUnit
   extend ActiveSupport::Concern
   included do
-    enum frequency_unit: %i(hour)
+    enum unit: %i(hr), _prefix: :frequency_unit
   end
 end

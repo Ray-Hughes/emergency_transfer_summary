@@ -20,15 +20,19 @@ diagnosis = Diagnosis.create!([
     coding_system: 'ICD10',
     code: 'S82.101',
     description: 'a fracture of upper end of the right tibia',
-    reference_id: admission.id,
-    reference_type: admission.class.name
+    admission_id: admission.id
   },
   {
     coding_system: 'ICD10',
     code: 'S82.101A',
     description: 'a closed fracture in the right tibia',
-    reference_id: patient.id,
-    reference_type: patient.class.name
+    patient_id: patient.id
+  },
+  {
+    coding_system: 'ICD10',
+    code: 'J45',
+    description: 'Asthma',
+    patient_condition_id: patient.id
   }
 ])
 

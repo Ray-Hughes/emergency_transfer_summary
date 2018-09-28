@@ -8,7 +8,9 @@ class Diagnosis < ApplicationRecord
   # Validations & Callbacks
   # 
   
-  belongs_to :reference, polymorphic: true
+  belongs_to :patient, optional: true
+  belongs_to :chronic_condition, class_name: :Patient, optional: true
+  belongs_to :admission, optional: true
   
   # **********************************
   # Instance Methods

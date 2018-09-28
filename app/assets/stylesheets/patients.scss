@@ -6,7 +6,18 @@
   margin-bottom: 10px;
 }
 
-table tbody tr:hover {
+.patients-index table tbody tr:hover {
   cursor: pointer;
   background-color: #CBEBF4;
+}
+
+.summary-table {
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 0 !important;
+}
+
+.form-title {
+  background-color: #cecece;
 }

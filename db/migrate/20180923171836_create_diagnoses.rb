@@ -4,7 +4,9 @@ class CreateDiagnoses < ActiveRecord::Migration[5.2]
       t.string :coding_system
       t.string :code
       t.text :description
-      t.references :reference, polymorphic: true
+      t.references :patient
+      t.references :patient_condition
+      t.references :admission
       
       t.timestamps
     end

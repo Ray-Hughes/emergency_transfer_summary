@@ -8,13 +8,14 @@ class Patient < ApplicationRecord
   # *******************************
   # Validations & Callbacks
   # 
-  has_many :diagnoses, as: :reference
+  has_one :admission
+  
+  has_many :chronic_conditions, class_name: :Diagnosis, foreign_key: :patient_condition_id
+  has_many :diagnoses
   has_many :allergies
-  has_many :chronic_conditions
-  has_many :medication_orders
+  has_many :medications, class_name: :MedicationOrder
   has_many :diagnostic_procedures
   has_many :treatments
-  has_one :admission
   
   # **********************************
   # Instance Methods

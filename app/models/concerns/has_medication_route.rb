@@ -1,6 +1,6 @@
 module HasMedicationRoute
   extend ActiveSupport::Concern
   included do
-    enum medication_route: %i(PO IM SC)
+    enum route: %i(po im sc), _prefix: :medication_route
   end
 end

@@ -1,6 +1,6 @@
 module HasMassUnit
   extend ActiveSupport::Concern
   included do
-    enum mass_unit: %i(mg)
+    enum unit: %i(mg), _prefix: :mass_unit
   end
 end

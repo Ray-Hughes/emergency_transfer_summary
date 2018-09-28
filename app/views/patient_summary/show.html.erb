@@ -1,16 +1,73 @@
-<p>
-  This <%= @patient.age %> years old <%= @patient.gender %> was admitted to <%= @facility.name %> 
-  on <%= @patient.admission.date %> at <%= @patient.admission.time %> due to <%= @patient.admission.diagnoses.map(&:described_code).to_sentence %>. 
-  The observed symptoms on admission were <%= @patient.admission.symptoms.map(&:description).to_sentence %>. 
-  <%= @patient.admission.observations.map(&:description).to_sentence %>.
-</p>
-<p>
-  Upon asking about known allergies, the patient disclosed {{patient.allergies > description | comma_separate }}. 
-  Upon asking about chronic conditions, the patient disclosed {{patient.chronic_conditions > described_code | comma_separated}}. 
-  The patient was administered with {{patient.medications > name, dosage, route, frequency, “to”, necessity | space_join | comma_separate }}.
-</p>
-<p>
-  The staff performed {{patient.diagnostic_procedures > description, “at”, time | space_join | comma_separate }}, 
-  revealing {{patient.diagnoses > described_code | comma_separate }}. Our team proceeded to 
-  {{patient.treatments > description, “to”, necessity | space_join | comma_separate }}.
-</p>
+<table class="table summary-table">
+  <thead>
+    <tr class="form-title">
+      <th>Emergency Transfer Summary (From 34L-D)</th>
+    </tr>
+  </thead>
+</table>
+
+<table class="table summary-table">
+  <thead>
+    <tr>
+      <th>Transferring Facility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        Name<br>
+        <%= @facility.name %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table summary-table">
+  <thead>
+    <tr>
+      <th>Patient Information</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td id="first_name">First Name <br> <%= @patient.first_name %></td>
+      <td id="middle_name">Middle Name <br> <%= @patient.middle_name %></td>
+      <td id="last_name">Last Name <br> <%= @patient.last_name %></td>
+      <td id="mr">Medical Record (MR) <br> <%= @patient.mr %></td>
+    </tr>
+  </tbody>
+</table>
+  
+<table class="table summary-table">
+  <thead>
+    <tr>
+      <th>Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <p>
+          This <%= @patient.age %> years old <%= @patient.gender %> was admitted to <%= @facility.name %> 
+          on <%= @patient.admission.date %> at <%= @patient.admission.time %> due to <%= @patient.admission.diagnoses.map(&:described_code).to_sentence %>. 
+          The observed symptoms on admission were <%= @patient.admission.symptoms.map(&:description).to_sentence %>. 
+          <%= @patient.admission.observations.map(&:description).to_sentence %>.
+        </p>
+        <p>
+          Upon asking about known allergies, the patient disclosed <%= @patient.allergies.map(&:description).to_sentence %>. 
+          Upon asking about chronic conditions, the patient disclosed <%= @patient.chronic_conditions.map(&:description).to_sentence %>. 
+          The patient was administered with <%= @patient.medications.map(&:summary).to_sentence %>.
+        </p>
+        <p>
+          The staff performed <%= @patient.diagnostic_procedures.map(&:summary).to_sentence %>, 
+          revealing <%= @patient.diagnoses.map(&:described_code).to_sentence %>. Our team proceeded to 
+          <%= @patient.treatments.map(&:summary).to_sentence %>.
+        </p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -32,11 +32,14 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
     t.string "coding_system"
     t.string "code"
     t.text "description"
-    t.string "reference_type"
-    t.integer "reference_id"
+    t.integer "patient_id"
+    t.integer "patient_condition_id"
+    t.integer "admission_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["reference_type", "reference_id"], name: "index_diagnoses_on_reference_type_and_reference_id"
+    t.index ["admission_id"], name: "index_diagnoses_on_admission_id"
+    t.index ["patient_condition_id"], name: "index_diagnoses_on_patient_condition_id"
+    t.index ["patient_id"], name: "index_diagnoses_on_patient_id"
   end
 
   create_table "diagnostic_procedures", force: :cascade do |t|
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 2018_09_23_172432) do
 
   create_table "order_frequencies", force: :cascade do |t|
     t.string "value"
-    t.decimal "unit"
+    t.integer "unit"
     t.integer "medication_order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

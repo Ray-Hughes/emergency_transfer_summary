@@ -8,7 +8,7 @@ class Admission < ApplicationRecord
   # Validations & Callbacks
   # 
   
-  has_many :diagnoses, as: :reference
+  has_many :diagnoses
   has_many :symptoms
   has_many :observations
   
