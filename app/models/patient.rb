@@ -12,9 +12,6 @@ class Patient < ApplicationRecord
     model.errors[:base] << 'First name can not be blank' if model.first_name.blank?
     model.errors[:base] << 'Last name can not be blank' if model.last_name.blank?
     model.errors[:base] << 'MR# can not be blank and must be unique' if model.mr.blank?
-    unless model.dob.blank?
-      model.errors[:base] << 'DOB must be a date' unless model.dob.is_a?(Date)
-    end
   end
   
   
@@ -40,6 +37,14 @@ class Patient < ApplicationRecord
   
   def has_admission?
     !admission.nil?
+  end
+  
+  def date_of_birth=(v)
+    self.dob = v.nil? ? v : Date.parse(v)
+  end
+  
+  def date_of_birth
+    self.dob && self.dob.strftime("%d-%m-%Y")
   end
   
 end

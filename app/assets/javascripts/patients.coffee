@@ -7,6 +7,12 @@ $(document).on('turbolinks:load', ->
     href = $(event.target).parent().data("href")
     if (href)
       window.location = href
+      
+  $('.jq-datepicker').datepicker({
+      format: 'dd/mm/yyyy'
+  })
 )
+
+
   
   
