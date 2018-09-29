@@ -40,7 +40,7 @@ class Patient < ApplicationRecord
   end
   
   def date_of_birth=(v)
-    self.dob = v.nil? ? v : Date.parse(v)
+    self.dob = Date.parse(v) unless v.blank?
   end
   
   def date_of_birth
