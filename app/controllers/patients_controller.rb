@@ -31,6 +31,8 @@ class PatientsController < ApplicationController
   end
   
   def update
+    add_breadcrumb '<< Patients', patients_path
+    
     @patient = Patient.find(params[:id])
     
     if @patient.update_attributes(user_params)
