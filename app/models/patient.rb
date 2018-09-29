@@ -10,8 +10,8 @@ class Patient < ApplicationRecord
   # 
   validate do |model|
     model.errors[:base] << 'First name can not be blank' if model.first_name.blank?
-    model.errors[:base] << 'Last name can not be balnk' if model.last_name.blank?
-    model.errors[:base] << 'MR# can not be balnk and must be unique' if model.mr.blank?
+    model.errors[:base] << 'Last name can not be blank' if model.last_name.blank?
+    model.errors[:base] << 'MR# can not be blank and must be unique' if model.mr.blank?
   end
   
   
