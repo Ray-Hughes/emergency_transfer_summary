@@ -18,7 +18,7 @@ module ApplicationHelper
     messages = []
     
     flash.each do |key, value|
-      messages << %Q[<div class="alert alert-#{key == 'notice' ? 'success' : key}">#{value}</div>]
+      messages << %Q[<div class="alert alert-#{key == 'error' ? 'danger' : 'success'}">#{value}</div>]
     end
     
     messages.join(" ").
@@ -26,6 +26,8 @@ module ApplicationHelper
   end
   
   def to_sentence(items = [])
+    return "" if items.nil?
+    
     words_connector = ", "
     two_words_connector = " and "
     last_word_connector = ", and "

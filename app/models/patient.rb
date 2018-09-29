@@ -8,6 +8,13 @@ class Patient < ApplicationRecord
   # *******************************
   # Validations & Callbacks
   # 
+  validate do |model|
+    model.errors[:base] << 'First name can not be blank' if model.first_name.blank?
+    model.errors[:base] << 'Last name can not be balnk' if model.last_name.blank?
+    model.errors[:base] << 'MR# can not be balnk and must be unique' if model.mr.blank?
+  end
+  
+  
   has_one :admission
   
   has_many :chronic_conditions, class_name: :Diagnosis, foreign_key: :patient_condition_id
@@ -25,7 +32,7 @@ class Patient < ApplicationRecord
   end
   
   def age
-    ((Time.zone.now - dob.to_time) / 1.year.seconds).floor
+    dob && ((Time.zone.now - dob.to_time) / 1.year.seconds).floor
   end
   
   def has_admission?

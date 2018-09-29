@@ -17,12 +17,15 @@ class PatientsController < ApplicationController
   end
   
   def create
+    add_breadcrumb '<< Patients', patients_path
+    
     @patient = Patient.new(user_params)
     
     if @patient.save
       flash[:notice] = "Patient created successfully!"
       redirect_to edit_patient_path(@patient)
     else
+      flash[:error] = @patient.errors.full_messages.join(", ")
       render 'new'
     end
   end
